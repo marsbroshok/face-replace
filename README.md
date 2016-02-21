@@ -3,6 +3,8 @@ This is a proof-of-concept Python script inspired by [MSQRD](http://msqrd.me) an
 
 To play with the script you should have a still image with sample face and video file with someone's else face in it (or you can use your web camera with your own face;) ).
 
+You can find sample still image and video in the "*demo*" directory. 
+
 ## Basic Idea
 
 1. Detected where is a face in the still image
