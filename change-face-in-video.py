@@ -22,17 +22,17 @@ def warp_face_in_video(facial_mask_fn, video_in_fn, video_out_fn, show_video=Fal
 
     video_out = cv2.VideoWriter(
         filename=video_out_fn,
-        fourcc=cv2.cv.CV_FOURCC('m', 'p', '4', 'v'),
-        frameSize=(int(video_in.get(cv2.cv.CV_CAP_PROP_FRAME_WIDTH)),
-                   int(video_in.get(cv2.cv.CV_CAP_PROP_FRAME_HEIGHT))),
+        fourcc=cv2.VideoWriter_fourcc('m', '2', 'v', '1'),
+        frameSize=(int(video_in.get(cv2.CAP_PROP_FRAME_WIDTH)),
+                   int(video_in.get(cv2.CAP_PROP_FRAME_HEIGHT))),
         fps=25.0,
         isColor=True)
 
-    total_frames_in = video_in.get(cv2.cv.CV_CAP_PROP_FRAME_COUNT)
+    total_frames_in = video_in.get(cv2.CAP_PROP_FRAME_COUNT)
     while True:
         ret, frame_in = video_in.read()
         if ret == True:
-            curr_frame = video_in.get(cv2.cv.CV_CAP_PROP_POS_FRAMES)
+            curr_frame = video_in.get(cv2.CAP_PROP_POS_FRAMES)
             frame_in = cv2.cvtColor(frame_in, cv2.COLOR_BGR2GRAY)
             if show_video:
                 cv2.imshow('video_in', frame_in)
@@ -70,7 +70,7 @@ def warp_face_from_webcam(facial_mask_fn, video_out_fn):
 
     video_out = cv2.VideoWriter(
         filename=video_out_fn,
-        fourcc=cv2.cv.CV_FOURCC('m', 'p', '4', 'v'), # works good on OSX, for other OS maybe try other codecs
+        fourcc=cv2.VideoWriter_fourcc('m', '2', 'v', '1'), # works good on OSX, for other OS maybe try other codecs
         frameSize=frame_size,
         fps=25.0,
         isColor=True)
@@ -105,7 +105,7 @@ if __name__ == "__main__":
                         then the web cam will be used', default='0')
     parser.add_argument('outputvideo', metavar='VIDEOOUT',
                         help='the full path to output video file with the new face. If "0" is provided then \
-                        process video will be shown on the screen, but not saved.')
+                        process video will be shown on the screen, but not saved. (.MOV format)')
     args = parser.parse_args()
 
     # Check if there is a video file and process it.
