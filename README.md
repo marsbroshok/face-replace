@@ -34,7 +34,7 @@ Final video, Arni's face is in place of mine:
 This script was tested in the following environment:
 
 * Python 2.7
-* [OpenCV 2.4.10](http://opencv.org)
+* [OpenCV 3](http://opencv.org)
 * Skimage
 * Numpy
 * [Dlib library 18.17](http://dlib.net)
